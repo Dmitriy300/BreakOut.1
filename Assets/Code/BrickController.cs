@@ -6,9 +6,9 @@ public class BrickController : MonoBehaviour
     [SerializeField] private GameObject _explosionEffect;
     [SerializeField] private int _maxHealth = 3;
     [SerializeField] private GameObject _platformBuffPrefab;
-    [SerializeField] private float _buffDropChance = 0.2f; // Шанс выпадения баффа (20%)
-    [SerializeField] private int _maxBuffsPerLevel = 2; // Максимальное количество баффов за уровень
-    private static int _buffsDropped = 0; // Количество уже выпавших баффов
+    [SerializeField] private float _buffDropChance = 0.2f; 
+    [SerializeField] private int _maxBuffsPerLevel = 2; 
+    private static int _buffsDropped = 0; 
     public GameSounds _gameSounds;
 
     private AudioSource _audioSource;
@@ -73,8 +73,7 @@ public class BrickController : MonoBehaviour
     }
 
     private void DropBuff()
-    {
-        // Создаем бафф на месте кирпича
+    {        
         if (_platformBuffPrefab != null)
         {
             Instantiate(_platformBuffPrefab, transform.position, Quaternion.identity);
@@ -82,8 +81,7 @@ public class BrickController : MonoBehaviour
     }
 
     public static void ResetBuffsDropped()
-    {
-        // Сбрасываем счетчик баффов при начале нового уровня
+    {        
         _buffsDropped = 0;
     }
 }

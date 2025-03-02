@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
 
     private void HandleBrickDestroyed()
     {
-        _destroyedBricks++; // Увеличиваем счетчик уничтоженных кирпичей
+        _destroyedBricks++; 
 
-        // Если все кирпичи уничтожены, перезапускаем уровень
+       
         if (_destroyedBricks >= _totalBricks)
         {
             RestartLevel();
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Все кирпичи уничтожены! Перезапуск уровня...");
 
-        // Удаляем все кирпичи
+       
         foreach (var brick in GameObject.FindGameObjectsWithTag("Brick"))
         {
             Destroy(brick);
