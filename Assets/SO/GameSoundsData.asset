@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290c7247eca1bdc46bece86c2f74701b, type: 3}
+  m_Name: GameSoundsData
+  m_EditorClassIdentifier: 
+  launchSound: {fileID: 8300000, guid: f92a67e6b35ee694690d86addffd0e1b, type: 3}
+  bounceSound: {fileID: 8300000, guid: 2edf3f1ec56fe674381bcba2c1bca44b, type: 3}
+  brickBreakSound: {fileID: 8300000, guid: 3f97b09e20f895d46a3d76b47f1c2888, type: 3}
+  ballLostSound: {fileID: 8300000, guid: 3f5eaaa8db8c7cf459e304e7aa9829a6, type: 3}
+  buffApplySound: {fileID: 8300000, guid: ead8ad1ec01e0c64da8edb45ad4af8a8, type: 3}
