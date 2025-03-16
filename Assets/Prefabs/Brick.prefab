@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionEffect: {fileID: 7612857300712946810, guid: 3321237e94d38484196ade99a39e8265,
     type: 3}
-  _maxHealth: 2
+  _maxHealth: 1
   _platformBuffPrefab: {fileID: 6707736957918986058, guid: 2b225b8595a68804b8da4e498ee5e9ac,
     type: 3}
   _buffDropChance: 0.2

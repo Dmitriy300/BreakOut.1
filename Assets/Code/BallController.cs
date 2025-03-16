@@ -3,16 +3,19 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField] private float _speed = 10f;
+    [SerializeField] private GameSounds _gameSounds;
+    
     private bool _isLaunched = false; 
     private Vector3 _initialPosition; 
     private Rigidbody _rigidbody;
-
-    [SerializeField] private GameSounds _gameSounds;
     private AudioSource _audioSource;
-
+    private GameManager _gameManager;
+    private bool _firstLaunch = true;
+    
     private void Start()
     {
-        
+        _gameManager = FindObjectOfType<GameManager>();
+
         _rigidbody = GetComponent<Rigidbody>();
 
         _audioSource = GetComponent<AudioSource>();
@@ -27,17 +30,25 @@ public class BallController : MonoBehaviour
 
     private void Update()
     {
-        
-        if (!_isLaunched)
+
+        if (!GameManager.Instance.IsGameActive) return;
+
+        if (!_isLaunched && _firstLaunch)
         {
             FollowPlatform();
-        }
 
-        
-        if (Input.GetKeyDown(KeyCode.Space) && !_isLaunched)
-        {
-            LaunchBall();
+           
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                LaunchBall();
+                _firstLaunch = false;
+            }
         }
+    }
+
+    public void Initialize(GameManager gameManager)
+    {
+        _gameManager = gameManager;
     }
 
     private void FollowPlatform()
@@ -78,17 +89,19 @@ public class BallController : MonoBehaviour
             {
                 _audioSource.PlayOneShot(_gameSounds.ballLostSound);
             }
-
+            _gameManager.LoseLife();
             ResetBall();
         }
     }
 
     public void ResetBall()
     {
-       
+        _firstLaunch = true;
+        _isLaunched = false;
         _rigidbody.velocity = Vector3.zero;
-
         transform.position = _initialPosition;
         _isLaunched = false;
     }
+
+    
 }
