@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     private int _currentScore;
     private int _currentLives;
     private int _currentBlocks;
+    private int _score;
 
     private string _livesFormat;
     private string _scoreFormat;
@@ -123,6 +124,17 @@ public class UIManager : MonoBehaviour
         HideGameOver();
         GameManager.Instance.RestartGame();
 
+    }
+
+    private void OnDestroy()
+    {
+        _restartButton.onClick.RemoveListener(RestartGame);
+        _quitButton.onClick.RemoveListener(QuitGame);
+    }
+
+    public int GetCurrentScore()
+    {
+        return _score;
     }
 
     private void QuitGame()

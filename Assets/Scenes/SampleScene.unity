@@ -2623,9 +2623,9 @@ MonoBehaviour:
   _gameSounds: {fileID: 11400000, guid: 8b44f4b63888d614ebf634815f85eae9, type: 2}
   _spacingX: 6.5
   _spacingY: 3
-  _rows: 5
-  _columns: 8
-  _startLives: 1
+  _rows: 1
+  _columns: 1
+  _startLives: 1000
   _uiManager: {fileID: 407582395}
   _ballController: {fileID: 1046416525}
 --- !u!1 &1538198857

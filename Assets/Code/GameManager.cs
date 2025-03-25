@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _spacingY = 0.6f;
     [SerializeField] private int _rows = 5;
     [SerializeField] private int _columns = 8;
-    [SerializeField] private int _startLives = 3;
+    [SerializeField] private int _startLives = 1;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private BallController _ballController;
 
@@ -103,7 +104,18 @@ public class GameManager : MonoBehaviour
         _uiManager.UpdateBlocks(--_totalBricks);
 
         if (++_destroyedBricks >= _bricks.Count)
-            RestartGame();
+        {
+            SaveProgress();
+            SceneManager.LoadScene("Victory");
+        }
+            //RestartGame();
+    }
+
+    private void SaveProgress()
+    {
+        PlayerPrefs.SetInt("CurrentScore", _uiManager.GetCurrentScore());
+        PlayerPrefs.SetInt("RewardCup", PlayerPrefs.GetInt("RewardCup", 0) + 1);
+        PlayerPrefs.Save();
     }
 
     public void RestartGame()
