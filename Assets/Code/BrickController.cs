@@ -4,7 +4,7 @@ public class BrickController : MonoBehaviour
 {
     private int _health;
     [SerializeField] private GameObject _explosionEffect;
-    [SerializeField] private int _maxHealth = 3;
+    [SerializeField] private int _maxHealth = 1;
     [SerializeField] private GameObject _platformBuffPrefab;
     [SerializeField] private float _buffDropChance = 0.2f; 
     [SerializeField] private int _maxBuffsPerLevel = 2; 
@@ -59,6 +59,13 @@ public class BrickController : MonoBehaviour
 
                 ChangeColorBasedOnHealth();
             }
+        }
+
+        if (_health <= 0)
+        {
+            GameManager.Instance.UIManager.UpdateBlocks(
+                        GameManager.Instance.TotalBricks - GameManager.Instance.DestroyedBricks);
+            Destroy(gameObject);
         }
     }
     private void ChangeColorBasedOnHealth()
